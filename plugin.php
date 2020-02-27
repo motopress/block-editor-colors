@@ -9,17 +9,18 @@
  * Domain Path: /languages/
  */
 
-if (!defined('CEC_PLUGIN_FILE')) {
-    define('CEC_PLUGIN_FILE', __FILE__);
+use CustomEditorColors\CustomEditorColors;
+
+if ( ! defined( 'CEC_PLUGIN_FILE' ) ) {
+	define( 'CEC_PLUGIN_FILE', __FILE__ );
 }
 
-if (!class_exists('CustomEditorColors')) {
-    require_once dirname(__FILE__) . '/includes/CustomEditorColors.php';
+if ( ! class_exists( 'CustomEditorColors' ) ) {
+	require_once dirname( __FILE__ ) . '/includes/CustomEditorColors.php';
 }
 
-function CustomEditorColors()
-{
-    return CustomEditorColors::getInstance();
+function CustomEditorColors() {
+	return CustomEditorColors::getInstance();
 }
 
-add_action('init', 'CustomEditorColors');
+add_action( 'init', 'CustomEditorColors' );

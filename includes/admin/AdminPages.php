@@ -1,5 +1,7 @@
 <?php
 
+namespace CustomEditorColors;
+
 class AdminPages
 {
 
