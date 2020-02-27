@@ -2,12 +2,9 @@
 
     $(function () {
         $('.cec-color-field-edit').wpColorPicker({
-            change: function (e) {
+            change: function (e, ui) {
                 var preview = $(this).closest('form').find('.color-preview');
-
-                if(preview){
-                    preview.css('background', this.value);
-                }
+                preview.css('background', ui.color);
             }
         });
     });

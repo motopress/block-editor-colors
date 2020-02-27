@@ -32,7 +32,7 @@ class SettingsPage {
 
 	public function render_page() {
 		?>
-        <div class="wrap">
+        <div class="wrap cec-wrapper">
             <h2>Custom Editor Colors</h2>
 
             <h3>Default Theme Colors</h3>
@@ -284,5 +284,6 @@ class SettingsPage {
 			'jquery',
 			'wp-color-picker'
 		) );
+		wp_enqueue_style( 'cec-admin-style', plugins_url( '/assets/style.css', CEC_PLUGIN_FILE ) );
 	}
 }

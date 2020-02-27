@@ -54,14 +54,16 @@ class ColorService {
 		$theme_colors        = current( (array) get_theme_support( 'editor-color-palette' ) );
 		$edited_theme_colors = [];
 
-		foreach ( $theme_colors as $index => $color ) {
-			$theme_colors[ $index ]['default-color'] = $color['color'];
-			$edited_color                            = get_theme_mod( $this->theme_mod_prefix . $color['slug'], false );
-			if ( $edited_color ) {
-				$theme_colors[ $index ]['color'] = $edited_color;
-				$edited_theme_colors[]           = $theme_colors[ $index ];
-			}
+		if ( $theme_colors ) {
+			foreach ( $theme_colors as $index => $color ) {
+				$theme_colors[ $index ]['default-color'] = $color['color'];
+				$edited_color                            = get_theme_mod( $this->theme_mod_prefix . $color['slug'], false );
+				if ( $edited_color ) {
+					$theme_colors[ $index ]['color'] = $edited_color;
+					$edited_theme_colors[]           = $theme_colors[ $index ];
+				}
 
+			}
 		}
 
 		$this->initial_colors        = $theme_colors ? $theme_colors : [];
