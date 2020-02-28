@@ -1,6 +1,78 @@
-.cec-wrapper .wp-picker-active .wp-picker-holder {
+.bec-wrapper .wp-picker-active .wp-picker-holder {
     position: absolute;
     padding: 10px;
     background: #fff;
-    box-shadow: 0 0 5px rgba(0,0,0,.5);
+    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+}
+
+.bec-wrapper .wp-picker-clear {
+    display: none;
+}
+
+.bec-wrapper .bec-inactive-colors,
+.bec-wrapper .bec-color-tiles {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.bec-wrapper .bec-color-tile {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 0 20px 20px 0;
+}
+
+.bec-wrapper .bec-color-creator {
+    box-shadow: 0 0 10px rgba(150, 150, 150, .5);
+    margin-left: 40px;
+    position: relative;
+}
+
+.bec-wrapper .bec-color-creator:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -30px;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #fff;
+}
+
+.bec-wrapper .bec-color-table td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.bec-wrapper .bec-color-table .bec-color-cell {
+    padding: 0;
+}
+
+.bec-wrapper .bec-color-table .bec-color-submit-cell {
+    padding-bottom: 0;
+}
+
+.bec-wrapper .bec-color-table .bec-color-preview {
+    height: 40px;
+    border: 2px solid black;
+}
+
+.bec-wrapper .bec-inactive-color {
+    margin: 0 20px 20px 0;
+}
+
+.bec-wrapper .bec-link-button {
+    border: 0;
+    background: none;
+    color: #007cba;
+    text-decoration: underline;
+    padding: 0;
+}
+
+.bec-wrapper .bec-link-button:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.bec-wrapper .bec-link-button.red {
+    color: #cb302a;
 }

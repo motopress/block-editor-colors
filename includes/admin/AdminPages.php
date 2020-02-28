@@ -1,6 +1,6 @@
 <?php
 
-namespace CustomEditorColors;
+namespace BlockEditorColors;
 
 class AdminPages
 {

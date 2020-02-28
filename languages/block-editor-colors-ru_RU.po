@@ -1,0 +1,139 @@
+# Copyright (C) 2020 MotoPress
+# This file is distributed under the same license as the Block Editor Colors plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Block Editor Colors 0.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/block-editor-"
+"colors\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-02-28T12:04:32+03:00\n"
+"PO-Revision-Date: 2020-02-28 11:05+0200\n"
+"X-Generator: Poedit 2.2.4\n"
+"X-Domain: block-editor-colors\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Language: ru_RU\n"
+
+#. Plugin Name of the plugin
+msgid "Block Editor Colors"
+msgstr ""
+
+#. Description of the plugin
+msgid "Change your block editor colors."
+msgstr ""
+
+#. Author of the plugin
+msgid "MotoPress"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://motopress.com"
+msgstr ""
+
+#: includes/admin/pages/SettingsPage.php:65
+msgid ""
+"Looks like your theme do not register any colors. Colors which you can see "
+"in editor is hardcoded."
+msgstr ""
+
+#: includes/admin/pages/SettingsPage.php:96
+#: includes/admin/pages/SettingsPage.php:165
+#: includes/admin/pages/SettingsPage.php:220
+msgid "Name: "
+msgstr ""
+
+#: includes/admin/pages/SettingsPage.php:100
+#: includes/admin/pages/SettingsPage.php:169
+#: includes/admin/pages/SettingsPage.php:224
+msgid "Color Name"
+msgstr ""
+
+#: includes/admin/pages/SettingsPage.php:106
+#: includes/admin/pages/SettingsPage.php:175
+#: includes/admin/pages/SettingsPage.php:229
+msgid "Slug: "
+msgstr ""
+
+#: includes/admin/pages/SettingsPage.php:111
+#: includes/admin/pages/SettingsPage.php:180
+#: includes/admin/pages/SettingsPage.php:233
+msgid "color-name"
+msgstr ""
+
+#: includes/admin/pages/SettingsPage.php:117
+#: includes/admin/pages/SettingsPage.php:186
+#: includes/admin/pages/SettingsPage.php:238
+msgid "Color: "
+msgstr "Цвет: "
+
+#: includes/admin/pages/SettingsPage.php:128
+#: includes/admin/pages/SettingsPage.php:197
+#: includes/admin/pages/SettingsPage.php:273
+msgid "Update"
+msgstr "Обновить"
+
+#: includes/admin/pages/SettingsPage.php:131
+msgid "Clear"
+msgstr ""
+
+#: includes/admin/pages/SettingsPage.php:199
+msgid "Delete"
+msgstr ""
+
+#: includes/admin/pages/SettingsPage.php:248
+msgid "Add Color"
+msgstr ""
+
+#: includes/ColorService.php:75 includes/ColorService.php:78
+msgid "Custom Color"
+msgstr ""
+
+#: includes/ColorService.php:77 includes/ColorService.php:86
+msgid "Custom Colors"
+msgstr ""
+
+#: includes/ColorService.php:79 includes/ColorService.php:80
+msgid "Add Custom Color"
+msgstr ""
+
+#: includes/ColorService.php:81
+msgid "Edit Custom Color"
+msgstr ""
+
+#: includes/ColorService.php:82
+msgid "New Custom Color"
+msgstr ""
+
+#: includes/ColorService.php:83
+msgid "View Custom Color"
+msgstr ""
+
+#: includes/ColorService.php:84
+msgid "Find Custom Color"
+msgstr ""
+
+#: includes/ColorService.php:85
+msgid "Custom Color Not Found"
+msgstr ""
+
+#: includes/ColorService.php:126 includes/ColorService.php:145
+#: includes/ColorService.php:201 includes/ColorService.php:303
+msgid "Denied"
+msgstr ""
+
+#: includes/ColorService.php:130 includes/ColorService.php:162
+#: includes/ColorService.php:218
+msgid "Empty fields"
+msgstr ""
+
+#: includes/ColorService.php:149
+msgid "You should specify Color ID"
+msgstr ""
+
+#: includes/ColorService.php:205
+msgid "You should specify Color Slug"
+msgstr ""

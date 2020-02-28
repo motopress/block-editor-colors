@@ -1,26 +1,26 @@
 <?php
 /**
- * Plugin Name: Custom Editor Colors
- * Description: Change your editor colors.
+ * Plugin Name: Block Editor Colors
+ * Description: Change your block editor colors.
  * Version: 0.0.1
  * Author: MotoPress
  * Author URI: https://motopress.com
- * Text Domain: custom-editor-colors
+ * Text Domain: block-editor-colors
  * Domain Path: /languages/
  */
 
-use CustomEditorColors\CustomEditorColors;
+use BlockEditorColors\BlockEditorColors;
 
-if ( ! defined( 'CEC_PLUGIN_FILE' ) ) {
-	define( 'CEC_PLUGIN_FILE', __FILE__ );
+if ( ! defined( 'BEC_PLUGIN_FILE' ) ) {
+	define( 'BEC_PLUGIN_FILE', __FILE__ );
 }
 
-if ( ! class_exists( 'CustomEditorColors' ) ) {
-	require_once dirname( __FILE__ ) . '/includes/CustomEditorColors.php';
+if ( ! class_exists( 'BlockEditorColors' ) ) {
+	require_once dirname( __FILE__ ) . '/includes/BlockEditorColors.php';
 }
 
-function CustomEditorColors() {
-	return CustomEditorColors::getInstance();
+function BlockEditorColors() {
+	return BlockEditorColors::getInstance();
 }
 
-add_action( 'init', 'CustomEditorColors' );
+BlockEditorColors();
