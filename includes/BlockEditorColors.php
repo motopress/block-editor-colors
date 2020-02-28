@@ -22,7 +22,10 @@ class BlockEditorColors {
 	}
 
 	public function setup_color_service() {
-		include_once dirname( __FILE__ ) . '/ColorService.php';
+		include_once dirname( __FILE__ ) . '/OptionsService.php';
+		include_once dirname( __FILE__ ) . '/DefaultColorsService.php';
+		include_once dirname( __FILE__ ) . '/CustomColorsService.php';
+		include_once dirname( __FILE__ ) . '/ColorsService.php';
 		include_once dirname( __FILE__ ) . '/admin/AdminPages.php';
 	}
 

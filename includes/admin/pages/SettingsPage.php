@@ -7,7 +7,9 @@ class SettingsPage {
 	private static $menu_title = 'Editor Colors';
 	private static $menu_slug = 'editor-colors';
 	private static $capability = 'manage_options';
-	private $colors_service = null;
+	private $custom_colors_service = null;
+	private $default_colors_service = null;
+	private $options_service = null;
 
 	public function __construct() {
 		add_options_page(
@@ -17,7 +19,9 @@ class SettingsPage {
 			self::$menu_slug,
 			array( $this, 'render_page' )
 		);
-		$this->colors_service = ColorService::getInstance();
+		$this->custom_colors_service  = CustomColorsService::getInstance();
+		$this->default_colors_service = DefaultColorsService::getInstance();
+		$this->options_service        = OptionsService::getInstance();
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_page_scripts' ) );
 	}
 
@@ -66,7 +70,7 @@ class SettingsPage {
 
 	public function render_initial_colors() {
 
-		$initial_colors = $this->colors_service->get_initial_colors();
+		$initial_colors = $this->default_colors_service->get_colors();
 		?>
         <h3><?php esc_html_e( 'Default Theme Colors', 'block-editor-colors' ); ?></h3>
         <p><?php esc_html_e( 'We do not recommend changing the colors that are set by the theme, as they are tied to a specific theme.
@@ -154,7 +158,7 @@ class SettingsPage {
 	}
 
 	public function render_custom_colors() {
-		$colors = $this->colors_service->get_custom_colors();
+		$colors = $this->custom_colors_service->get_colors();
 		?>
         <h3><?php esc_html_e( 'Custom Colors', 'block-editor-colors' ); ?></h3>
         <p><?php esc_html_e( 'The colors you created when changing the theme will not be lost. The created color 
@@ -307,25 +311,27 @@ class SettingsPage {
 						<?php esc_html_e( 'CSS class prefix:' ); ?>
                     </td>
                     <td>
-                        <input type="text" value="<?php echo $this->colors_service->get_style_classes_prefix(); ?>"
-                               name="<?php echo $this->colors_service->get_class_prefix_option_name(); ?>">
+                        <input type="text" value="<?php echo $this->options_service->get_style_classes_prefix(); ?>"
+                               name="<?php echo $this->options_service->get_class_prefix_option_name(); ?>">
                     </td>
                     <td>
-                        <?php esc_html_e('These CSS classes/selectors will be used in style generation, 
-                        and will be added before the color classes.' , 'block-editor-colors');?>
+						<?php esc_html_e( 'These CSS classes/selectors will be used in style generation, 
+                        and will be added before the color classes.', 'block-editor-colors' ); ?>
                         <br/>
-                        <i><?php esc_html_e('For example: .entry-content .has-my-color-background-color', 'block-editor-colors');?></i>
+                        <i><?php esc_html_e( 'For example: .entry-content .has-my-color-background-color', 'block-editor-colors' ); ?></i>
                     </td>
                 </tr>
             </table>
-            <button type="submit" name="save"
-                    class="button button-primary"><?php esc_html_e( 'Update', 'block-editor-colors' ); ?></button>
+            <p>
+                <button type="submit" name="save"
+                        class="button button-primary"><?php esc_html_e( 'Update', 'block-editor-colors' ); ?></button>
+            </p>
         </form>
 		<?php
 	}
 
 	public function render_disabled_custom_colors() {
-		$colors = $this->colors_service->get_custom_colors( true );
+		$colors = $this->custom_colors_service->get_colors( true );
 		if ( ! $colors ) {
 			return;
 		}
@@ -340,7 +346,7 @@ class SettingsPage {
 
 					<?php wp_nonce_field( 'update_inactive_color', 'update_inactive_color_nonce' ); ?>
 
-                    <input name="color_id" type="hidden" value="<?php echo $id;?>">
+                    <input name="color_id" type="hidden" value="<?php echo $id; ?>">
                     <input name="action" type="hidden" value="edit_inactive_color">
 
                     <table>
@@ -356,7 +362,7 @@ class SettingsPage {
 								<?php esc_html_e( 'Name: ', 'block-editor-colors' ); ?>
                             </td>
                             <td>
-	                            <?php echo $color['name']; ?>
+								<?php echo $color['name']; ?>
                             </td>
                         </tr>
                         <tr>
@@ -365,17 +371,17 @@ class SettingsPage {
 								<?php esc_html_e( 'Slug: ', 'block-editor-colors' ); ?>
                             </td>
                             <td>
-	                            <?php echo $color['slug']; ?>
+								<?php echo $color['slug']; ?>
                             </td>
                         </tr>
 
                         <tr>
                             <td></td>
                             <td>
-			                    <?php esc_html_e( 'Color: ', 'block-editor-colors' ); ?>
+								<?php esc_html_e( 'Color: ', 'block-editor-colors' ); ?>
                             </td>
                             <td>
-	                            <?php echo $color['color']; ?>
+								<?php echo $color['color']; ?>
                             </td>
                         </tr>
                         <tr>
@@ -383,7 +389,7 @@ class SettingsPage {
                             <td class="bec-color-submit-cell" colspan="2">
                                 <button type="submit" name="restore"
                                         class="bec-link-button"><?php esc_html_e( 'Restore', 'block-editor-colors' ); ?></button>
-                                 |
+                                |
                                 <button type="submit" name="delete"
                                         class="bec-link-button red"><?php esc_html_e( 'Delete', 'block-editor-colors' ); ?></button>
                             </td>

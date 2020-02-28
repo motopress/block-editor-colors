@@ -1,5 +1,6 @@
 .bec-wrapper .wp-picker-active .wp-picker-holder {
     position: absolute;
+    z-index: 10;
     padding: 10px;
     background: #fff;
     box-shadow: 0 0 5px rgba(0, 0, 0, .5);
