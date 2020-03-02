@@ -94,18 +94,18 @@ class SettingsPage {
 
 					<?php wp_nonce_field( 'update_initial_color', 'update_initial_color_nonce' ); ?>
 
-                    <input name="slug" type="hidden" value="<?php echo $color['slug']; ?>">
+                    <input name="slug" type="hidden" value="<?php echo esc_attr( $color['slug'] ); ?>">
                     <input name="action" type="hidden" value="edit_initial_color">
 
                     <table class="bec-color-table">
                         <tr>
                             <td class="bec-color-cell">
                                 <div class="default-color"
-                                     style="height: 40px; border: 2px solid black; background: <?php echo $color['default-color']; ?>"></div>
+                                     style="height: 40px; border: 2px solid black; background: <?php echo esc_attr( $color['default-color'] ); ?>"></div>
                             </td>
                             <td class="bec-color-cell">
                                 <div class="bec-color-preview"
-                                     style="background: <?php echo $color['color']; ?>"></div>
+                                     style="background: <?php echo esc_attr( $color['color'] ); ?>"></div>
                             </td>
                         </tr>
                         <tr>
@@ -115,7 +115,7 @@ class SettingsPage {
                             <td>
                                 <input type="text" name="color"
                                        class="bec-color-field"
-                                       value="<?php echo $color['color']; ?>" required>
+                                       value="<?php echo esc_attr( $color['color'] ); ?>" required>
                             </td>
                         </tr>
                         <tr>
@@ -123,7 +123,7 @@ class SettingsPage {
 								<?php esc_html_e( 'Name: ', 'block-editor-colors' ); ?>
                             </td>
                             <td>
-                                <input type="text" value="<?php echo $color['name']; ?>"
+                                <input type="text" value="<?php echo esc_attr( $color['name'] ); ?>"
                                        placeholder="<?php esc_html_e( 'Color Name', 'block-editor-colors' ); ?>"
                                        required disabled>
                             </td>
@@ -134,7 +134,7 @@ class SettingsPage {
                             </td>
                             <td>
                                 <input type="text"
-                                       value="<?php echo $color['slug']; ?>"
+                                       value="<?php echo esc_attr( $color['slug'] ); ?>"
                                        placeholder="<?php esc_html_e( 'color-name', 'block-editor-colors' ); ?>"
                                        required disabled>
                             </td>
@@ -182,14 +182,14 @@ class SettingsPage {
 
 					<?php wp_nonce_field( 'update_custom_color', 'update_custom_color_nonce' ); ?>
 
-                    <input name="color_id" type="hidden" value="<?php echo $id; ?>">
+                    <input name="color_id" type="hidden" value="<?php echo esc_attr( $id ); ?>">
                     <input name="action" type="hidden" value="edit_custom_color">
 
                     <table class="bec-color-table">
                         <tr>
                             <td colspan="2" class="bec-color-cell">
                                 <div class="bec-color-preview"
-                                     style="background: <?php echo $color['color']; ?>"></div>
+                                     style="background: <?php echo esc_attr( $color['color'] ); ?>"></div>
                             </td>
                         </tr>
                         <tr>
@@ -199,7 +199,7 @@ class SettingsPage {
                             <td>
                                 <input type="text" name="color"
                                        class="bec-color-field"
-                                       value="<?php echo $color['color']; ?>" required>
+                                       value="<?php echo esc_attr( $color['color'] ); ?>" required>
                             </td>
                         </tr>
                         <tr>
@@ -207,7 +207,7 @@ class SettingsPage {
 								<?php esc_html_e( 'Name: ', 'block-editor-colors' ); ?>
                             </td>
                             <td>
-                                <input type="text" name="name" value="<?php echo $color['name']; ?>"
+                                <input type="text" name="name" value="<?php echo esc_attr( $color['name'] ); ?>"
                                        placeholder="<?php esc_html_e( 'Color Name', 'block-editor-colors' ); ?>"
                                        required>
                             </td>
@@ -218,7 +218,7 @@ class SettingsPage {
                             </td>
                             <td>
                                 <input type="text" name="slug"
-                                       value="<?php echo $color['slug']; ?>"
+                                       value="<?php echo esc_attr( $color['slug'] ); ?>"
                                        placeholder="<?php esc_html_e( 'color-name', 'block-editor-colors' ); ?>"
                                        required disabled>
                             </td>
@@ -311,8 +311,9 @@ class SettingsPage {
 						<?php esc_html_e( 'CSS class prefix:' ); ?>
                     </td>
                     <td>
-                        <input type="text" value="<?php echo $this->options_service->get_style_classes_prefix(); ?>"
-                               name="<?php echo $this->options_service->get_class_prefix_option_name(); ?>">
+                        <input type="text"
+                               value="<?php echo esc_attr( $this->options_service->get_style_classes_prefix() ); ?>"
+                               name="<?php echo esc_attr( $this->options_service->get_class_prefix_option_name() ); ?>">
                     </td>
                     <td>
 						<?php esc_html_e( 'These CSS classes/selectors will be used in style generation, 
@@ -346,12 +347,12 @@ class SettingsPage {
 
 					<?php wp_nonce_field( 'update_inactive_color', 'update_inactive_color_nonce' ); ?>
 
-                    <input name="color_id" type="hidden" value="<?php echo $id; ?>">
+                    <input name="color_id" type="hidden" value="<?php echo esc_attr( $id ); ?>">
                     <input name="action" type="hidden" value="edit_inactive_color">
 
                     <table>
                         <tr>
-                            <td rowspan="5" style="width: 40px; background: <?php echo $color['color']; ?>">
+                            <td rowspan="5" style="width: 40px; background: <?php echo esc_attr( $color['color'] ); ?>">
                             </td>
                             <td></td>
                             <td></td>
@@ -362,7 +363,7 @@ class SettingsPage {
 								<?php esc_html_e( 'Name: ', 'block-editor-colors' ); ?>
                             </td>
                             <td>
-								<?php echo $color['name']; ?>
+								<?php echo esc_html( $color['name'] ); ?>
                             </td>
                         </tr>
                         <tr>
@@ -371,7 +372,7 @@ class SettingsPage {
 								<?php esc_html_e( 'Slug: ', 'block-editor-colors' ); ?>
                             </td>
                             <td>
-								<?php echo $color['slug']; ?>
+								<?php echo esc_html( $color['slug'] ); ?>
                             </td>
                         </tr>
 
@@ -381,7 +382,7 @@ class SettingsPage {
 								<?php esc_html_e( 'Color: ', 'block-editor-colors' ); ?>
                             </td>
                             <td>
-								<?php echo $color['color']; ?>
+								<?php echo esc_html( $color['color'] ); ?>
                             </td>
                         </tr>
                         <tr>

@@ -29,6 +29,14 @@
     position: relative;
 }
 
+.bec-wrapper .bec-color-creator:first-child{
+    margin-left: 0;
+}
+
+.bec-wrapper .bec-color-creator:first-child:before{
+    display: none;
+}
+
 .bec-wrapper .bec-color-creator:before {
     content: '';
     position: absolute;

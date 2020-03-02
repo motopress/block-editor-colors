@@ -62,7 +62,7 @@ CSS;
 
 		?>
         <style>
-            <?php echo $style; ?>
+            <?php echo esc_html($style); ?>
         </style>
 		<?php
 
