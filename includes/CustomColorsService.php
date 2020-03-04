@@ -103,9 +103,9 @@ class CustomColorsService {
 			wp_die( esc_html__( 'Empty fields', 'block-editor-colors' ) );
 		}
 
-		$name  = $_POST['new_name'];
-		$slug  = $_POST['new_slug'];
-		$color = $_POST['new_color'];
+		$name  = sanitize_text_field( $_POST['new_name'] );
+		$slug  = sanitize_title( $_POST['new_slug'] );
+		$color = sanitize_hex_color( $_POST['new_color'] );
 
 		$this->update_color( $name, $color, $slug );
 
@@ -135,8 +135,8 @@ class CustomColorsService {
 			wp_die( esc_html__( 'Empty fields', 'block-editor-colors' ) );
 		}
 
-		$name  = $_POST['name'];
-		$color = $_POST['color'];
+		$name  = sanitize_text_field( $_POST['name'] );
+		$color = sanitize_hex_color( $_POST['color'] );
 
 		$this->update_color( $name, $color, false, $id );
 

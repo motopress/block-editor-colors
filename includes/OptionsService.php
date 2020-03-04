@@ -44,7 +44,8 @@ class OptionsService {
 
 		$prefix_option_name = $this->get_class_prefix_option_name();
 		if ( isset( $_POST[ $prefix_option_name ] ) ) {
-			update_option( $prefix_option_name, $_POST[ $prefix_option_name ] );
+			$option_value = sanitize_text_field( $_POST[ $prefix_option_name ] );
+			update_option( $prefix_option_name, $option_value );
 		}
 
 		wp_redirect( SettingsPage::getAdminUrl() );

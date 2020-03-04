@@ -90,7 +90,7 @@ class SettingsPage {
 			foreach ( $initial_colors as $color ):
 				?>
                 <form class="bec-color-tile"
-                      action="<?php echo esc_url( admin_url( 'admin-post.php' ) ) ?>" method="post">
+                      action="<?php echo esc_url( admin_url( 'admin-post.php' ) ) ?>" method="post" autocomplete="off">
 
 					<?php wp_nonce_field( 'update_initial_color', 'update_initial_color_nonce' ); ?>
 
@@ -220,7 +220,7 @@ class SettingsPage {
                                 <input type="text" name="slug"
                                        value="<?php echo esc_attr( $color['slug'] ); ?>"
                                        placeholder="<?php esc_html_e( 'color-name', 'block-editor-colors' ); ?>"
-                                       required disabled>
+                                       disabled>
                             </td>
                         </tr>
                         <tr>

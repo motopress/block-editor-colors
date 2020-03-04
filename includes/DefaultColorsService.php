@@ -86,7 +86,7 @@ class DefaultColorsService {
 			wp_die( esc_html__( 'Empty fields', 'block-editor-colors' ) );
 		}
 
-		$color = $_POST['color'];
+		$color = sanitize_hex_color($_POST['color']);
 
 		$this->update_color( $slug, $color );
 
