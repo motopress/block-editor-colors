@@ -122,7 +122,7 @@ class CustomColorsService {
 			wp_die( esc_html__( 'You should specify Color ID', 'block-editor-colors' ) );
 		}
 
-		$id = $_POST['color_id'];
+		$id = absint( $_POST['color_id'] );
 
 		if ( isset( $_POST['disable'] ) ) {
 			$this->disable_color( $id );
@@ -195,7 +195,7 @@ class CustomColorsService {
 			wp_die( esc_html__( 'You should specify Color ID', 'block-editor-colors' ) );
 		}
 
-		$id = $_POST['color_id'];
+		$id = absint( $_POST['color_id'] );
 
 		if ( isset( $_POST['delete'] ) ) {
 			$this->delete_color( $id );

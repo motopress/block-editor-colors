@@ -8,7 +8,7 @@ class DefaultColorsService {
 	private $colors = [];
 	private $edited_colors = [];
 	private $theme_colors = false;
-	private $theme_mod_prefix = 'bec_';
+	private $theme_mod_name = 'bec_theme_colors';
 	private static $_instance = null;
 
 	public static function getInstance() {
@@ -35,23 +35,14 @@ class DefaultColorsService {
 	}
 
 	private function set_colors() {
-		$theme_colors        = $this->theme_colors;
+		$theme_colors        = $this->theme_colors ? $this->theme_colors : $this->get_initial_colors();
 		$edited_theme_colors = [];
+		$colors_theme_mod    = get_theme_mod( $this->theme_mod_name, array() );
 
 		if ( $theme_colors ) {
 			foreach ( $theme_colors as $index => $color ) {
 				$theme_colors[ $index ]['default-color'] = $color['color'];
-				$edited_color                            = get_theme_mod( $this->theme_mod_prefix . $color['slug'], false );
-				if ( $edited_color ) {
-					$theme_colors[ $index ]['color'] = $edited_color;
-					$edited_theme_colors[]           = $theme_colors[ $index ];
-				}
-			}
-		} else {
-			$theme_colors = $this->get_initial_colors();
-			foreach ( $theme_colors as $index => $color ) {
-				$theme_colors[ $index ]['default-color'] = $color['color'];
-				$edited_color                            = get_option( $this->theme_mod_prefix . $color['slug'], false );
+				$edited_color                            = isset( $colors_theme_mod[ $color['slug'] ] ) ? $colors_theme_mod[ $color['slug'] ] : false;
 				if ( $edited_color ) {
 					$theme_colors[ $index ]['color'] = $edited_color;
 					$edited_theme_colors[]           = $theme_colors[ $index ];
@@ -59,7 +50,7 @@ class DefaultColorsService {
 			}
 		}
 
-		$this->colors        = $theme_colors ? $theme_colors : [];
+		$this->colors        = $theme_colors ? $theme_colors : array();
 		$this->edited_colors = $edited_theme_colors;
 	}
 
@@ -73,20 +64,18 @@ class DefaultColorsService {
 			wp_die( esc_html__( 'You should specify Color Slug', 'block-editor-colors' ) );
 		}
 
-		$slug = $_POST['slug'];
+		$slug = sanitize_title( $_POST['slug'] );
 
 		if ( isset( $_POST['clear'] ) ) {
 			$this->reset_color( $slug );
 			wp_redirect( SettingsPage::getAdminUrl() );
-
-			return;
 		}
 
 		if ( ! isset( $_POST['color'] ) || ! isset( $_POST['update'] ) ) {
 			wp_die( esc_html__( 'Empty fields', 'block-editor-colors' ) );
 		}
 
-		$color = sanitize_hex_color($_POST['color']);
+		$color = sanitize_hex_color( $_POST['color'] );
 
 		$this->update_color( $slug, $color );
 
@@ -95,19 +84,35 @@ class DefaultColorsService {
 	}
 
 	private function update_color( $slug, $color ) {
-		if ( $this->theme_colors ) {
-			set_theme_mod( $this->theme_mod_prefix . $slug, $color );
-		} else {
-			update_option( $this->theme_mod_prefix . $slug, $color );
+
+		$colors = $this->get_edited_colors();
+
+		if ( $colors ) {
+			$colors = array_column( $colors, 'color', 'slug' );
 		}
+
+		$colors[ $slug ] = $color;
+
+		set_theme_mod( $this->theme_mod_name, $colors );
+
 	}
 
 	private function reset_color( $slug ) {
-		if ( $this->theme_colors ) {
-			remove_theme_mod( $this->theme_mod_prefix . $slug );
+
+		$colors = $this->get_edited_colors();
+
+		if ( $colors ) {
+			$colors = array_column( $colors, 'color', 'slug' );
 		} else {
-			delete_option( $this->theme_mod_prefix . $slug );
+			return;
 		}
+
+		if ( array_key_exists( $slug, $colors ) ) {
+			unset( $colors[ $slug ] );
+		}
+
+		set_theme_mod( $this->theme_mod_name, $colors );
+
 	}
 
 	private function get_initial_colors() {
