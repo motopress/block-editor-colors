@@ -60,11 +60,10 @@ CSS;
 			return;
 		}
 
-		?>
-        <style>
-            <?php echo esc_html($style); ?>
-        </style>
-		<?php
+		?><style id="bec-color-style" type="text/css">
+/* Block Editor Colors generated css */
+<?php echo esc_html($style); ?>
+        </style><?php
 
 	}
 

@@ -70,7 +70,7 @@ class SettingsPage {
 		$initial_colors = $this->default_colors_service->get_colors();
 		?>
         <h3><?php esc_html_e( 'Default Colors', 'block-editor-colors' ); ?></h3>
-        <p><?php esc_html_e( 'We do not recommend changing the colors that are set by the theme, as they are tied to a specific theme. When changing the theme there will be new colors.', 'block-editor-colors' ); ?></p>
+        <p><?php esc_html_e( 'The colors below are tied to the theme. When changing the theme there will be new colors. Customized colors will be available only in the theme for which you configured them.', 'block-editor-colors' ); ?></p>
 
 		<?php
 		if ( ! $initial_colors ) {
