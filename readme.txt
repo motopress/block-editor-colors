@@ -19,7 +19,12 @@ This plugin allows you to edit colors for block editor registered in theme, defa
 2. Activate the Getwid WordPress plugin through the 'Plugins' menu in WordPress.
 3. Use Getwid on your next page or post.
 
+== Copyright ==
+
+Block Editor Colors, Copyright (C) 2020, MotoPress https://motopress.com/
+Block Editor Colors plugin is distributed under the terms of the GNU GPL.
+
 == Changelog ==
 
-= 1.0 =
+= 0.0.1 =
 * Initial release.
