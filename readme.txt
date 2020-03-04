@@ -16,8 +16,8 @@ This plugin allows you to edit colors for block editor registered in theme, defa
 == Installation ==
 
 1. Upload the plugin to the /wp-content/plugins/ directory.
-2. Activate the Getwid WordPress plugin through the 'Plugins' menu in WordPress.
-3. Use Getwid on your next page or post.
+2. Activate the Block Editor Colors WordPress plugin through the 'Plugins' menu in WordPress.
+3. Edit existed or create your own colors on Settings > Editor Colors page.
 
 == Copyright ==
 
