@@ -4,7 +4,6 @@ namespace BlockEditorColors;
 
 class BlockEditorColors {
 
-	private $plugin_textdomain = 'block-editor-colors';
 	private static $_instance = null;
 
 	public static function getInstance() {
@@ -17,7 +16,6 @@ class BlockEditorColors {
 
 	public function __construct() {
 		add_action( 'init', array( $this, 'setup_color_service' ) );
-		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
 		add_action( 'plugin_action_links_' . plugin_basename( BEC_PLUGIN_FILE ), array( $this, 'action_links' ) );
 	}
 
@@ -27,10 +25,6 @@ class BlockEditorColors {
 		include_once dirname( __FILE__ ) . '/CustomColorsService.php';
 		include_once dirname( __FILE__ ) . '/ColorsService.php';
 		include_once dirname( __FILE__ ) . '/admin/AdminPages.php';
-	}
-
-	public function load_textdomain() {
-		load_plugin_textdomain( $this->plugin_textdomain, false, dirname( plugin_basename( BEC_PLUGIN_FILE ) ) . '/languages/' );
 	}
 
 	public function action_links( $links ) {
