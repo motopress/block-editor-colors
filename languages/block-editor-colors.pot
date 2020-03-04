@@ -9,13 +9,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-02-28T18:16:36+03:00\n"
+"POT-Creation-Date: 2020-03-04T12:33:18+03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: block-editor-colors\n"
 
 #. Plugin Name of the plugin
-#: includes/admin/pages/SettingsPage.php:35
+#: includes/admin/pages/SettingsPage.php:38
 msgid "Block Editor Colors"
 msgstr ""
 
@@ -31,20 +31,23 @@ msgstr ""
 msgid "https://motopress.com"
 msgstr ""
 
-#: includes/admin/pages/SettingsPage.php:36
-msgid ""
-"This plugin allows you to change colors for a block editor that are registered with a \r\n"
-"            theme, or create your own colors, which then appear in the block editor in the color selector."
+#: includes/admin/pages/SettingsPage.php:15
+#: includes/admin/pages/SettingsPage.php:16
+#: includes/CustomColorsService.php:34
+#: includes/CustomColorsService.php:43
+msgid "Editor Colors"
 msgstr ""
 
-#: includes/admin/pages/SettingsPage.php:71
-msgid "Default Theme Colors"
+#: includes/admin/pages/SettingsPage.php:39
+msgid "This plugin allows you to change colors for a block editor that are registered with a theme, or create your own colors, which then appear in the block editor in the color selector."
 msgstr ""
 
 #: includes/admin/pages/SettingsPage.php:72
-msgid ""
-"We do not recommend changing the colors that are set by the theme, as they are tied to a specific theme.\r\n"
-"         When changing the theme there will be new colors."
+msgid "Default Theme Colors"
+msgstr ""
+
+#: includes/admin/pages/SettingsPage.php:73
+msgid "We do not recommend changing the colors that are set by the theme, as they are tied to a specific theme. When changing the theme there will be new colors."
 msgstr ""
 
 #: includes/admin/pages/SettingsPage.php:78
@@ -52,41 +55,41 @@ msgid "Looks like your theme do not register any colors. Colors which you can se
 msgstr ""
 
 #: includes/admin/pages/SettingsPage.php:109
-#: includes/admin/pages/SettingsPage.php:193
-#: includes/admin/pages/SettingsPage.php:260
-#: includes/admin/pages/SettingsPage.php:375
+#: includes/admin/pages/SettingsPage.php:192
+#: includes/admin/pages/SettingsPage.php:259
+#: includes/admin/pages/SettingsPage.php:377
 msgid "Color: "
 msgstr ""
 
 #: includes/admin/pages/SettingsPage.php:119
-#: includes/admin/pages/SettingsPage.php:203
-#: includes/admin/pages/SettingsPage.php:269
-#: includes/admin/pages/SettingsPage.php:356
+#: includes/admin/pages/SettingsPage.php:202
+#: includes/admin/pages/SettingsPage.php:268
+#: includes/admin/pages/SettingsPage.php:358
 msgid "Name: "
 msgstr ""
 
 #: includes/admin/pages/SettingsPage.php:123
-#: includes/admin/pages/SettingsPage.php:207
-#: includes/admin/pages/SettingsPage.php:273
+#: includes/admin/pages/SettingsPage.php:206
+#: includes/admin/pages/SettingsPage.php:272
 msgid "Color Name"
 msgstr ""
 
 #: includes/admin/pages/SettingsPage.php:129
-#: includes/admin/pages/SettingsPage.php:213
-#: includes/admin/pages/SettingsPage.php:278
-#: includes/admin/pages/SettingsPage.php:365
+#: includes/admin/pages/SettingsPage.php:212
+#: includes/admin/pages/SettingsPage.php:277
+#: includes/admin/pages/SettingsPage.php:367
 msgid "Slug: "
 msgstr ""
 
 #: includes/admin/pages/SettingsPage.php:134
-#: includes/admin/pages/SettingsPage.php:218
-#: includes/admin/pages/SettingsPage.php:282
+#: includes/admin/pages/SettingsPage.php:217
+#: includes/admin/pages/SettingsPage.php:281
 msgid "color-name"
 msgstr ""
 
 #: includes/admin/pages/SettingsPage.php:141
-#: includes/admin/pages/SettingsPage.php:225
-#: includes/admin/pages/SettingsPage.php:322
+#: includes/admin/pages/SettingsPage.php:224
+#: includes/admin/pages/SettingsPage.php:323
 msgid "Update"
 msgstr ""
 
@@ -95,15 +98,11 @@ msgid "Reset"
 msgstr ""
 
 #: includes/admin/pages/SettingsPage.php:159
-#: includes/ColorService.php:79
-#: includes/ColorService.php:88
 msgid "Custom Colors"
 msgstr ""
 
 #: includes/admin/pages/SettingsPage.php:160
-msgid ""
-"The colors you created when changing the theme will not be lost. The created color \r\n"
-"        can be deactivated, then it will not be displayed in the block editor color palette."
+msgid "The colors you created when changing the theme will not be lost. The created color can be deactivated, then it will not be displayed in the block editor color palette."
 msgstr ""
 
 #: includes/admin/pages/SettingsPage.php:163
@@ -114,107 +113,111 @@ msgstr ""
 msgid "will be displayed as the color name in the block editor."
 msgstr ""
 
-#: includes/admin/pages/SettingsPage.php:166
+#: includes/admin/pages/SettingsPage.php:165
 msgid "Slug - "
 msgstr ""
 
-#: includes/admin/pages/SettingsPage.php:167
+#: includes/admin/pages/SettingsPage.php:166
 msgid "will be used to generate CSS classes for color."
 msgstr ""
 
-#: includes/admin/pages/SettingsPage.php:168
-msgid ""
-"Only Latin lowercase letters, numbers, hyphens and underscores are allowed. \r\n"
-"            The slug must be unique."
+#: includes/admin/pages/SettingsPage.php:167
+msgid "Only Latin lowercase letters, numbers, hyphens and underscores are allowed. The slug must be unique."
 msgstr ""
 
-#: includes/admin/pages/SettingsPage.php:170
+#: includes/admin/pages/SettingsPage.php:168
 msgid "(\"name12\" - bad slug use \"name-12\" instead)"
 msgstr ""
 
-#: includes/admin/pages/SettingsPage.php:227
+#: includes/admin/pages/SettingsPage.php:226
 msgid "Disable"
 msgstr ""
 
-#: includes/admin/pages/SettingsPage.php:288
+#: includes/admin/pages/SettingsPage.php:287
 msgid "Add Color"
 msgstr ""
 
-#: includes/admin/pages/SettingsPage.php:314
-msgid ""
-"These CSS classes/selectors will be used in style generation, \r\n"
-"                        and will be added before the color classes."
+#: includes/admin/pages/SettingsPage.php:298
+msgid "General Settings"
+msgstr ""
+
+#: includes/admin/pages/SettingsPage.php:307
+msgid "CSS class prefix:"
+msgstr ""
+
+#: includes/admin/pages/SettingsPage.php:315
+msgid "These CSS classes/selectors will be used in style generation, and will be added before the color classes."
 msgstr ""
 
 #: includes/admin/pages/SettingsPage.php:317
-msgid "For example: .entry-content .has-my-color-background-color"
+msgid "For example: .entry-content"
 msgstr ""
 
-#: includes/admin/pages/SettingsPage.php:333
+#: includes/admin/pages/SettingsPage.php:335
 msgid "Inactive Custom Colors"
 msgstr ""
 
-#: includes/admin/pages/SettingsPage.php:385
+#: includes/admin/pages/SettingsPage.php:387
 msgid "Restore"
 msgstr ""
 
-#: includes/admin/pages/SettingsPage.php:388
+#: includes/admin/pages/SettingsPage.php:390
 msgid "Delete"
 msgstr ""
 
-#: includes/BlockEditorColors.php:38
+#: includes/BlockEditorColors.php:35
 msgid "Settings"
 msgstr ""
 
-#: includes/ColorService.php:77
-#: includes/ColorService.php:80
-msgid "Custom Color"
+#: includes/CustomColorsService.php:32
+#: includes/CustomColorsService.php:35
+msgid "Editor Color"
 msgstr ""
 
-#: includes/ColorService.php:81
-#: includes/ColorService.php:82
-msgid "Add Custom Color"
+#: includes/CustomColorsService.php:36
+#: includes/CustomColorsService.php:37
+msgid "Add Editor Color"
 msgstr ""
 
-#: includes/ColorService.php:83
-msgid "Edit Custom Color"
+#: includes/CustomColorsService.php:38
+msgid "Edit Editor Color"
 msgstr ""
 
-#: includes/ColorService.php:84
-msgid "New Custom Color"
+#: includes/CustomColorsService.php:39
+msgid "New Editor Color"
 msgstr ""
 
-#: includes/ColorService.php:85
-msgid "View Custom Color"
+#: includes/CustomColorsService.php:40
+msgid "View Editor Color"
 msgstr ""
 
-#: includes/ColorService.php:86
-msgid "Find Custom Color"
+#: includes/CustomColorsService.php:41
+msgid "Find Editor Color"
 msgstr ""
 
-#: includes/ColorService.php:87
-msgid "Custom Color Not Found"
+#: includes/CustomColorsService.php:42
+msgid "Editor Color Not Found"
 msgstr ""
 
-#: includes/ColorService.php:143
-#: includes/ColorService.php:162
-#: includes/ColorService.php:236
-#: includes/ColorService.php:274
-#: includes/ColorService.php:360
+#: includes/CustomColorsService.php:99
+#: includes/CustomColorsService.php:118
+#: includes/CustomColorsService.php:191
+#: includes/DefaultColorsService.php:69
+#: includes/OptionsService.php:42
 msgid "Denied"
 msgstr ""
 
-#: includes/ColorService.php:147
-#: includes/ColorService.php:179
-#: includes/ColorService.php:253
+#: includes/CustomColorsService.php:103
+#: includes/CustomColorsService.php:135
+#: includes/DefaultColorsService.php:86
 msgid "Empty fields"
 msgstr ""
 
-#: includes/ColorService.php:166
-#: includes/ColorService.php:278
+#: includes/CustomColorsService.php:122
+#: includes/CustomColorsService.php:195
 msgid "You should specify Color ID"
 msgstr ""
 
-#: includes/ColorService.php:240
+#: includes/DefaultColorsService.php:73
 msgid "You should specify Color Slug"
 msgstr ""
