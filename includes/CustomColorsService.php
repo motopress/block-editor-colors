@@ -18,7 +18,7 @@ class CustomColorsService {
 		return self::$_instance;
 	}
 
-	protected function __construct() {
+	public function __construct() {
 		$this->set_color_cpt();
 		$this->set_colors();
 
@@ -110,6 +110,7 @@ class CustomColorsService {
 		$this->update_color( $name, $color, $slug );
 
 		wp_redirect( SettingsPage::getAdminUrl() );
+		exit;
 	}
 
 	public function edit_color() {
@@ -122,13 +123,12 @@ class CustomColorsService {
 			wp_die( esc_html__( 'You should specify Color ID', 'block-editor-colors' ) );
 		}
 
-		$id = $_POST['color_id'];
+		$id = absint( $_POST['color_id'] );
 
 		if ( isset( $_POST['disable'] ) ) {
 			$this->disable_color( $id );
 			wp_redirect( SettingsPage::getAdminUrl() );
-
-			return;
+			exit;
 		}
 
 		if ( ! isset( $_POST['name'] ) || ! isset( $_POST['color'] ) || ! isset( $_POST['update'] ) ) {
@@ -141,6 +141,7 @@ class CustomColorsService {
 		$this->update_color( $name, $color, false, $id );
 
 		wp_redirect( SettingsPage::getAdminUrl() );
+		exit;
 
 	}
 
@@ -195,7 +196,7 @@ class CustomColorsService {
 			wp_die( esc_html__( 'You should specify Color ID', 'block-editor-colors' ) );
 		}
 
-		$id = $_POST['color_id'];
+		$id = absint( $_POST['color_id'] );
 
 		if ( isset( $_POST['delete'] ) ) {
 			$this->delete_color( $id );
@@ -206,6 +207,7 @@ class CustomColorsService {
 		}
 
 		wp_redirect( SettingsPage::getAdminUrl() );
+		exit;
 	}
 
 }

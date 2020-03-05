@@ -16,7 +16,7 @@ class OptionsService {
 		return self::$_instance;
 	}
 
-	protected function __construct() {
+	public function __construct() {
 		$this->boot_general_options();
 
 		add_action( 'admin_post_update_general_options', array( $this, 'update_general_options' ) );
@@ -49,6 +49,7 @@ class OptionsService {
 		}
 
 		wp_redirect( SettingsPage::getAdminUrl() );
+		exit;
 	}
 
 }

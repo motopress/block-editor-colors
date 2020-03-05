@@ -18,7 +18,7 @@ class ColorsService {
 		return self::$_instance;
 	}
 
-	protected function __construct() {
+	public function __construct() {
 
 		$this->default_colors_service = DefaultColorsService::getInstance();
 		$this->custom_colors_service  = CustomColorsService::getInstance();
