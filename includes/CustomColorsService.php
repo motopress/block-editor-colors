@@ -18,7 +18,7 @@ class CustomColorsService {
 		return self::$_instance;
 	}
 
-	protected function __construct() {
+	public function __construct() {
 		$this->set_color_cpt();
 		$this->set_colors();
 
@@ -110,6 +110,7 @@ class CustomColorsService {
 		$this->update_color( $name, $color, $slug );
 
 		wp_redirect( SettingsPage::getAdminUrl() );
+		exit;
 	}
 
 	public function edit_color() {
@@ -127,8 +128,7 @@ class CustomColorsService {
 		if ( isset( $_POST['disable'] ) ) {
 			$this->disable_color( $id );
 			wp_redirect( SettingsPage::getAdminUrl() );
-
-			return;
+			exit;
 		}
 
 		if ( ! isset( $_POST['name'] ) || ! isset( $_POST['color'] ) || ! isset( $_POST['update'] ) ) {
@@ -141,6 +141,7 @@ class CustomColorsService {
 		$this->update_color( $name, $color, false, $id );
 
 		wp_redirect( SettingsPage::getAdminUrl() );
+		exit;
 
 	}
 
@@ -206,6 +207,7 @@ class CustomColorsService {
 		}
 
 		wp_redirect( SettingsPage::getAdminUrl() );
+		exit;
 	}
 
 }

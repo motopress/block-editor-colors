@@ -19,7 +19,7 @@ class DefaultColorsService {
 		return self::$_instance;
 	}
 
-	protected function __construct() {
+	public function __construct() {
 		$this->theme_colors = current( (array) get_theme_support( 'editor-color-palette' ) );
 		$this->set_colors();
 
@@ -69,6 +69,7 @@ class DefaultColorsService {
 		if ( isset( $_POST['clear'] ) ) {
 			$this->reset_color( $slug );
 			wp_redirect( SettingsPage::getAdminUrl() );
+			exit;
 		}
 
 		if ( ! isset( $_POST['color'] ) || ! isset( $_POST['update'] ) ) {
@@ -80,6 +81,7 @@ class DefaultColorsService {
 		$this->update_color( $slug, $color );
 
 		wp_redirect( SettingsPage::getAdminUrl() );
+		exit;
 
 	}
 
