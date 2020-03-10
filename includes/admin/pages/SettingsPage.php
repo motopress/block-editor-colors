@@ -36,7 +36,7 @@ class SettingsPage {
 		?>
         <div class="wrap bec-wrapper">
             <h2><?php esc_html_e( 'Block Editor Colors', 'block-editor-colors' ); ?></h2>
-            <p><?php esc_html_e( 'This plugin allows you to change colors for a block editor that are registered with a theme, or create your own colors, which then appear in the block editor in the color selector.', 'block-editor-colors' ); ?></p>
+            <p><?php esc_html_e( 'Change block editor colors that are registered with a theme or create your own colors, which then appear in the block editor in the color palette.', 'block-editor-colors' ); ?></p>
 
             <hr>
 
@@ -70,12 +70,12 @@ class SettingsPage {
 		$initial_colors = $this->default_colors_service->get_colors();
 		?>
         <h3><?php esc_html_e( 'Default Colors', 'block-editor-colors' ); ?></h3>
-        <p><?php esc_html_e( 'The colors below are tied to the theme. When changing the theme there will be new colors. Customized colors will be available only in the theme for which you configured them.', 'block-editor-colors' ); ?></p>
+        <p><?php esc_html_e( 'The colors that are tied to the active theme. It means there will be new colors below if you change theme.', 'block-editor-colors' ); ?></p>
 
 		<?php
 		if ( ! $initial_colors ) {
 			?>
-            <strong><?php esc_html_e( 'Looks like your theme do not register any colors. Colors which you can see in editor is hardcoded.', 'block-editor-colors' ); ?> </strong>
+            <strong><?php esc_html_e( 'Looks like your theme does not register any colors.', 'block-editor-colors' ); ?> </strong>
 			<?php
 			return;
 		}
@@ -157,18 +157,12 @@ class SettingsPage {
 		$colors = $this->custom_colors_service->get_colors();
 		?>
         <h3><?php esc_html_e( 'Custom Colors', 'block-editor-colors' ); ?></h3>
-        <p><?php esc_html_e( 'The colors you created when changing the theme will not be lost. The created color can be deactivated, then it will not be displayed in the block editor color palette.', 'block-editor-colors' ); ?></p>
-
-        <p>
-            <strong><?php esc_html_e( 'Name - ', 'block-editor-colors' ); ?></strong>
-			<?php esc_html_e( 'will be displayed as the color name in the block editor.', 'block-editor-colors' ); ?>
-            <br/>
-            <strong><?php esc_html_e( 'Slug - ', 'block-editor-colors' ); ?></strong>
-			<?php esc_html_e( 'will be used to generate CSS classes for color.', 'block-editor-colors' ); ?>
-            <strong><?php esc_html_e( 'Only Latin lowercase letters, numbers, hyphens and underscores are allowed. The slug must be unique.', 'block-editor-colors' ); ?></strong>
+        <p><?php esc_html_e( 'Create new colors with the form below to extend the color palette of block editor. You will not lose these colors when you change a theme. These colors can be deactivated or transfered via XML.', 'block-editor-colors' ); ?></p>
+		<p><?php esc_html_e( 'Name - will be displayed as the color name in the block editor.', 'block-editor-colors' ); ?><br/>
+			<?php esc_html_e( 'Slug - will be used to generate CSS classes for color.', 'block-editor-colors' ); ?>
+			<strong><?php esc_html_e( 'Only Latin lowercase letters, numbers, hyphens and underscores are allowed. The slug must be unique.', 'block-editor-colors' ); ?></strong>
 			<?php esc_html_e( '("name12" - bad slug use "name-12" instead)', 'block-editor-colors' ); ?>
         </p>
-
         <div class="bec-color-tiles">
 			<?php
 			foreach ( $colors as $id => $color ):
@@ -279,6 +273,7 @@ class SettingsPage {
                     </td>
                     <td>
                         <input type="text" name="new_slug" value=""
+								title="<?php esc_html_e( 'Only Latin lowercase letters, numbers, hyphens and underscores are allowed. The slug must be unique.', 'block-editor-colors' ); ?>"
                                placeholder="<?php esc_html_e( 'color-name', 'block-editor-colors' ); ?>" required>
                     </td>
                 </tr>
@@ -313,7 +308,7 @@ class SettingsPage {
                                name="<?php echo esc_attr( $this->options_service->get_class_prefix_option_name() ); ?>">
                     </td>
                     <td>
-						<?php esc_html_e( 'These CSS classes/selectors will be used in style generation, and will be added before the color classes.', 'block-editor-colors' ); ?>
+						<?php esc_html_e( 'This prefix will be used in style generation, and will be added before the color classes.', 'block-editor-colors' ); ?>
                         <br/>
                         <i><?php esc_html_e( 'For example: .entry-content', 'block-editor-colors' ); ?></i>
                     </td>
