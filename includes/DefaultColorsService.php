@@ -61,7 +61,7 @@ class DefaultColorsService {
 		}
 
 		if ( ! isset( $_POST['slug'] ) ) {
-			wp_die( esc_html__( 'You should specify Color Slug', 'block-editor-colors' ) );
+			wp_die( esc_html__( 'You must specify Color Slug', 'block-editor-colors' ) );
 		}
 
 		$slug = sanitize_title( $_POST['slug'] );

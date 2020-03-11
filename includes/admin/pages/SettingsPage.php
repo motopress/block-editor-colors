@@ -36,7 +36,7 @@ class SettingsPage {
 		?>
         <div class="wrap bec-wrapper">
             <h2><?php esc_html_e( 'Block Editor Colors', 'block-editor-colors' ); ?></h2>
-            <p><?php esc_html_e( 'Change block editor colors that are registered with a theme or create your own colors, which then appear in the block editor in the color palette.', 'block-editor-colors' ); ?></p>
+            <p><?php esc_html_e( 'Change block editor colors that are registered with a theme or create your own colors. They appear in the color palette of the block editor.', 'block-editor-colors' ); ?></p>
 
             <hr>
 
@@ -70,12 +70,12 @@ class SettingsPage {
 		$initial_colors = $this->default_colors_service->get_colors();
 		?>
         <h3><?php esc_html_e( 'Default Colors', 'block-editor-colors' ); ?></h3>
-        <p><?php esc_html_e( 'The colors that are tied to the active theme. It means there will be new colors below if you change theme.', 'block-editor-colors' ); ?></p>
+        <p><?php esc_html_e( 'The colors of the active theme. They change when you switch a theme.', 'block-editor-colors' ); ?></p>
 
 		<?php
 		if ( ! $initial_colors ) {
 			?>
-            <strong><?php esc_html_e( 'Looks like your theme does not register any colors.', 'block-editor-colors' ); ?> </strong>
+            <strong><?php esc_html_e( 'Looks like your theme does not have any registered colors', 'block-editor-colors' ); ?> </strong>
 			<?php
 			return;
 		}
@@ -157,9 +157,9 @@ class SettingsPage {
 		$colors = $this->custom_colors_service->get_colors();
 		?>
         <h3><?php esc_html_e( 'Custom Colors', 'block-editor-colors' ); ?></h3>
-        <p><?php esc_html_e( 'Create new colors with the form below to extend the color palette of block editor. You will not lose these colors when you change a theme. These colors can be deactivated or transfered via XML.', 'block-editor-colors' ); ?></p>
+        <p><?php esc_html_e( 'Create new colors using the form below to extend the color palette of the block editor. You will not lose these colors when you change a theme. These colors can be deactivated or transfered via XML.', 'block-editor-colors' ); ?></p>
 		<p><?php esc_html_e( 'Name - will be displayed as the color name in the block editor.', 'block-editor-colors' ); ?><br/>
-			<?php esc_html_e( 'Slug - will be used to generate CSS classes for color.', 'block-editor-colors' ); ?>
+			<?php esc_html_e( 'Slug - will be used to generate CSS classes for a color.', 'block-editor-colors' ); ?>
 			<strong><?php esc_html_e( 'Only Latin lowercase letters, numbers, hyphens and underscores are allowed. The slug must be unique.', 'block-editor-colors' ); ?></strong>
 			<?php esc_html_e( '("name12" - bad slug use "name-12" instead)', 'block-editor-colors' ); ?>
         </p>

@@ -120,7 +120,7 @@ class CustomColorsService {
 		}
 
 		if ( ! isset( $_POST['color_id'] ) ) {
-			wp_die( esc_html__( 'You should specify Color ID', 'block-editor-colors' ) );
+			wp_die( esc_html__( 'You must specify Color ID', 'block-editor-colors' ) );
 		}
 
 		$id = absint( $_POST['color_id'] );
@@ -193,7 +193,7 @@ class CustomColorsService {
 		}
 
 		if ( ! isset( $_POST['color_id'] ) ) {
-			wp_die( esc_html__( 'You should specify Color ID', 'block-editor-colors' ) );
+			wp_die( esc_html__( 'You must specify Color ID', 'block-editor-colors' ) );
 		}
 
 		$id = absint( $_POST['color_id'] );
