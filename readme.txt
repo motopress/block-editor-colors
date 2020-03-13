@@ -43,5 +43,8 @@ Block Editor Colors plugin is distributed under the terms of the GNU GPL.
 
 == Changelog ==
 
+= 1.0.0, Mar 13 2020 =
+* Minor bugfixes and improvements.
+
 = 0.0.1, Mar 9 2020 =
 * Initial release.
