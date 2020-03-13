@@ -12,19 +12,23 @@ Change Gutenberg block editor colors or create new ones.
 
 == Description ==
 
-This plugin allows you to edit Gutenberg block editor colors registered in a theme, default block editor colors and create your own colors.
+This plugin allows you to edit default Gutenberg block editor colors or the ones registered in a theme, as well as add your own colors! Since this is a global site configuration (applied sitewide), you can much easier go with your brand color scheme, without a need to manually change colors for each block each time.
 
-Navigate to Settings > Editor Colors to customize colors.
+Once the plugin is installed and activated, navigate to Settings > Editor Colors to customize colors.
 
-There are two sections for Customization:
+There are two sections to customize colors globally for your website:
 
 = Custom Colors =
 
-Here you can create new colors for color palette. You will not lose these colors when you change a theme. These colors can be deactivated or transfered via XML.
+Here you can create new colors for the block color palette. You will not lose these colors when you change a theme. These colors can be deactivated or transferred via XML.
 
 = Default Colors =
 
-Here you can edit colors that are registered by your active theme or Gutenberg.
+Here you can edit colors that are registered by your active WordPress theme or default Gutenberg block colors.
+
+= Need more blocks? =
+
+If you feel short of blocks, don’t lose the opportunity to install 40+ more free blocks and pre-made design patterns by [Getwid](https://wordpress.org/plugins/getwid/) WordPress blocks. This is a fantastic customization booster and design toolkit for the Gutenberg era in WordPress.
 
 == Installation ==
 
