@@ -3,7 +3,7 @@ Contributors: motopress, endzevich
 Donate link: https://motopress.com/
 Tags: gutenberg, gutenberg colors, color palette, editor color palette, customize, palette, gutenberg blocks, wordpress blocks
 Requires at least: 5.0
-Tested up to: 5.3
+Tested up to: 5.4
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
