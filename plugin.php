@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Block Editor Colors
  * Description: Change Gutenberg block editor colors or create new ones.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: MotoPress
  * Author URI: https://motopress.com
  * Text Domain: block-editor-colors
@@ -13,6 +13,7 @@ use BlockEditorColors\BlockEditorColors;
 
 if ( ! defined( 'BEC_PLUGIN_FILE' ) ) {
 	define( 'BEC_PLUGIN_FILE', __FILE__ );
+	define( 'BEC_PLUGIN_VERSION', '1.1.0' );
 }
 
 if ( ! class_exists( 'BlockEditorColors' ) ) {

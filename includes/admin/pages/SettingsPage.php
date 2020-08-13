@@ -81,7 +81,7 @@ class SettingsPage {
 		}
 
 		?>
-        <div class="bec-color-tiles">
+        <div class="bec-color-tiles" id="bec-default-colors">
 			<?php
 			foreach ( $initial_colors as $color ):
 				?>
@@ -163,7 +163,7 @@ class SettingsPage {
 			<strong><?php esc_html_e( 'Only Latin lowercase letters, numbers, hyphens and underscores are allowed. The slug must be unique.', 'block-editor-colors' ); ?></strong>
 			<?php esc_html_e( '("name12" - bad slug use "name-12" instead)', 'block-editor-colors' ); ?>
         </p>
-        <div class="bec-color-tiles">
+        <div class="bec-color-tiles" id="bec-custom-colors">
 			<?php
 			foreach ( $colors as $id => $color ):
 				?>
@@ -222,6 +222,9 @@ class SettingsPage {
                             </td>
                         </tr>
                     </table>
+	                <div class="status-icon move-icon" title="<?php esc_html_e('Drag the card to change the order of colors.'); ?>"><span class="dashicons dashicons-move"></span></div>
+	                <div class="status-icon moving-icon" title="<?php esc_html_e('Updating.'); ?>"><span class="dashicons dashicons-update"></span></div>
+	                <div class="status-icon update-error-icon" title="<?php esc_html_e('Something went wrong during the color update! Please try again.'); ?>"><span class="dashicons dashicons-warning"></span></div>
                 </form>
 			<?php
 			endforeach;
@@ -402,8 +405,17 @@ class SettingsPage {
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'cec-admin-js', plugins_url( '/assets/admin.js', BEC_PLUGIN_FILE ), array(
 			'jquery',
-			'wp-color-picker'
-		) );
-		wp_enqueue_style( 'cec-admin-style', plugins_url( '/assets/style.css', BEC_PLUGIN_FILE ) );
+			'wp-color-picker',
+			'jquery-ui-sortable'
+		), BEC_PLUGIN_VERSION );
+
+		wp_localize_script( 'cec-admin-js', 'BlockEditorColors',
+			array(
+				'ajax_url' => admin_url('admin-ajax.php'),
+				'nonce' => wp_create_nonce('block_editor_colors_nonce')
+			)
+		);
+
+		wp_enqueue_style( 'cec-admin-style', plugins_url( '/assets/style.css', BEC_PLUGIN_FILE ), array(), BEC_PLUGIN_VERSION );
 	}
 }

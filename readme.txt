@@ -3,7 +3,7 @@ Contributors: motopress, endzevich
 Donate link: https://motopress.com/
 Tags: gutenberg, gutenberg colors, color palette, editor color palette, customize, palette, gutenberg blocks, wordpress blocks
 Requires at least: 5.0
-Tested up to: 5.4
+Tested up to: 5.5
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -30,6 +30,8 @@ Here you can edit colors that are registered by your active WordPress theme or d
 
 If you feel short of blocks, don’t lose the opportunity to install 40+ more free blocks and pre-made design patterns by [Getwid](https://wordpress.org/plugins/getwid/) WordPress blocks. This is a fantastic customization booster and design toolkit for the Gutenberg era in WordPress.
 
+== Screenshots ==
+
 == Installation ==
 
 1. Upload the plugin to the /wp-content/plugins/ directory.
@@ -42,6 +44,10 @@ Block Editor Colors, Copyright (C) 2020, MotoPress https://motopress.com/
 Block Editor Colors plugin is distributed under the terms of the GNU GPL.
 
 == Changelog ==
+
+= 1.1.0, Aug 13 2020 =
+* Added the ability to change the order of colors.
+* Minor bugfixes and improvements.
 
 = 1.0.0, Mar 13 2020 =
 * Minor bugfixes and improvements.

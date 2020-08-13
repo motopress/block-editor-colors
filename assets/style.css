@@ -17,23 +17,37 @@
 }
 
 .bec-wrapper .bec-color-tile {
+    position: relative;
     background: #fff;
     border: 1px solid #ddd;
     padding: 15px;
     margin: 0 20px 20px 0;
+    box-sizing: border-box;
+    flex: 0 1 250px;
+    cursor: grab;
+}
+
+.bec-wrapper .bec-color-tile-placeholder {
+    background: transparent;
+    border: 2px dashed #ddd;
 }
 
 .bec-wrapper .bec-color-creator {
     box-shadow: 0 0 10px rgba(150, 150, 150, .5);
     margin-left: 40px;
     position: relative;
+    cursor: auto;
 }
 
-.bec-wrapper .bec-color-creator:first-child{
+#bec-default-colors .bec-color-tile {
+    cursor: auto;
+}
+
+.bec-wrapper .bec-color-creator:first-child {
     margin-left: 0;
 }
 
-.bec-wrapper .bec-color-creator:first-child:before{
+.bec-wrapper .bec-color-creator:first-child:before {
     display: none;
 }
 
@@ -45,6 +59,14 @@
     left: -30px;
     border-left: 1px solid #ddd;
     border-right: 1px solid #fff;
+}
+
+.bec-wrapper .bec-color-table {
+    width: 100%;
+}
+
+.bec-wrapper .bec-color-table input {
+    width: 100%;
 }
 
 .bec-wrapper .bec-color-table td {
@@ -84,4 +106,53 @@
 
 .bec-wrapper .bec-link-button.red {
     color: #cb302a;
+}
+
+.bec-wrapper .status-icon {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    color: #929290;
+    cursor: help;
+}
+
+.bec-wrapper .moving-icon {
+    display: none;
+    animation: bec-spin 1s infinite;
+    color: #43ac37;
+}
+
+.bec-wrapper .update-error-icon {
+    display: none;
+    color: #FD151B;
+}
+
+@keyframes bec-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.bec-wrapper .ui-sortable-helper .moving-icon,
+.bec-wrapper .move-start .moving-icon,
+.bec-wrapper .updating .moving-icon {
+    display: block;
+}
+
+.bec-wrapper .ui-sortable-helper .move-icon,
+.bec-wrapper .move-start .move-icon,
+.bec-wrapper .updating .move-icon {
+    display: none;
+}
+
+.bec-wrapper .update-error .update-error-icon {
+    display: block;
+}
+
+.bec-wrapper .update-error .move-icon,
+.bec-wrapper .update-error .moving-icon {
+    display: none;
 }
