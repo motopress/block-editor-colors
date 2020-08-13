@@ -407,7 +407,7 @@ class SettingsPage {
 			'jquery',
 			'wp-color-picker',
 			'jquery-ui-sortable'
-		) );
+		), BEC_PLUGIN_VERSION );
 
 		wp_localize_script( 'cec-admin-js', 'BlockEditorColors',
 			array(
@@ -416,6 +416,6 @@ class SettingsPage {
 			)
 		);
 
-		wp_enqueue_style( 'cec-admin-style', plugins_url( '/assets/style.css', BEC_PLUGIN_FILE ) );
+		wp_enqueue_style( 'cec-admin-style', plugins_url( '/assets/style.css', BEC_PLUGIN_FILE ), array(), BEC_PLUGIN_VERSION );
 	}
 }
