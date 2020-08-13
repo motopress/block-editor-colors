@@ -10,14 +10,6 @@ class CustomColorsService {
 	private $disabled_custom_colors = [];
 	private static $_instance = null;
 
-	public static function getInstance() {
-		if ( is_null( self::$_instance ) ) {
-			self::$_instance = new self();
-		}
-
-		return self::$_instance;
-	}
-
 	public function __construct() {
 		$this->set_color_cpt();
 		$this->set_colors();
@@ -25,6 +17,17 @@ class CustomColorsService {
 		add_action( 'admin_post_add_custom_color', array( $this, 'add_color' ) );
 		add_action( 'admin_post_edit_custom_color', array( $this, 'edit_color' ) );
 		add_action( 'admin_post_edit_inactive_color', array( $this, 'edit_inactive_color' ) );
+		if ( wp_doing_ajax() ) {
+			add_action( 'wp_ajax_bec_update_color_order', array( $this, 'update_color_order' ) );
+		}
+	}
+
+	public static function getInstance() {
+		if ( is_null( self::$_instance ) ) {
+			self::$_instance = new self();
+		}
+
+		return self::$_instance;
 	}
 
 	public function set_color_cpt() {
@@ -50,8 +53,9 @@ class CustomColorsService {
 
 		$args = array(
 			'post_type' => $this->color_cpt_slug,
-			'orderby'   => 'date',
-			'order'     => 'ASC'
+			'orderby'   => 'menu_order',
+			'order'     => 'ASC',
+			'nopaging'  => true
 		);
 
 		$query           = new \WP_Query( $args );
@@ -208,6 +212,26 @@ class CustomColorsService {
 
 		wp_redirect( SettingsPage::getAdminUrl() );
 		exit;
+	}
+
+	public function update_color_order() {
+		check_ajax_referer( 'block_editor_colors_nonce', 'nonce' );
+
+		$colors = $_POST['colors'];
+
+		foreach ( $colors as $order => $color_id ) {
+			$updated = wp_update_post( [
+				'ID'         => $color_id,
+				'menu_order' => $order
+			] );
+
+			if ( ! $updated ) {
+				wp_send_json_error();
+			}
+		}
+
+		wp_send_json_success();
+		wp_die();
 	}
 
 }
