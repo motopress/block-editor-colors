@@ -25,7 +25,13 @@ class ColorsService {
 		$this->options_service        = OptionsService::getInstance();
 
 		add_action( 'wp_head', array( $this, 'print_head_styles' ) );
-		add_filter( 'block_editor_settings', array( $this, 'filter_block_editor_settings' ) );
+
+		// since WP 5.8.0 'block_editor_settings' filter is deprecated
+		if ( function_exists( 'get_block_editor_settings' ) ) {
+			add_filter( 'block_editor_settings_all', array( $this, 'filter_block_editor_settings' ) );
+		} else {
+			add_filter( 'block_editor_settings', array( $this, 'filter_block_editor_settings' ) );
+		}
 	}
 
 	public function generate_colors_css() {
@@ -75,6 +81,10 @@ CSS;
 		$initial_colors     = array_values( $initial_colors );
 		$new_colors         = array_values( $new_colors );
 		$settings['colors'] = array_merge( $initial_colors, $new_colors );
+
+		if ( function_exists( 'get_block_editor_settings' ) ) {
+			$settings['__experimentalFeatures']['color']['palette']['user'] = array_merge($initial_colors, $new_colors);
+		}
 
 		return $settings;
 
