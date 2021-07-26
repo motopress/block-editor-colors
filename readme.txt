@@ -3,7 +3,7 @@ Contributors: motopress, endzevich
 Donate link: https://motopress.com/
 Tags: gutenberg, gutenberg colors, color palette, editor color palette, customize, palette, gutenberg blocks, wordpress blocks
 Requires at least: 5.0
-Tested up to: 5.6
+Tested up to: 5.8
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -44,6 +44,9 @@ Block Editor Colors, Copyright (C) 2020, MotoPress https://motopress.com/
 Block Editor Colors plugin is distributed under the terms of the GNU GPL.
 
 == Changelog ==
+
+= 1.2.0, Jul 26 2021 =
+* Improved compatibility with WordPress 5.8.
 
 = 1.1.0, Aug 13 2020 =
 * Added the ability to change the order of colors.
