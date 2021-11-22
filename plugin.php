@@ -3,7 +3,7 @@
  * Plugin Name: Block Editor Colors
  * Plugin URI: https://motopress.com/products/block-editor-colors/
  * Description: Change Gutenberg block editor colors or create new ones.
- * Version: 1.2.0
+ * Version: 1.2.1
  * Author: MotoPress
  * Author URI: https://motopress.com
  * Text Domain: block-editor-colors

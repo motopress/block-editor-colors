@@ -56,7 +56,7 @@ class DefaultColorsService {
 
 	public function edit_color() {
 
-		if ( empty( $_POST ) || ! wp_verify_nonce( $_POST['update_initial_color_nonce'], 'update_initial_color' ) ) {
+		if ( ! isset( $_POST['update_initial_color_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['update_initial_color_nonce'] ) ), 'update_initial_color' ) ) {
 			wp_die( esc_html__( 'Denied', 'block-editor-colors' ) );
 		}
 
@@ -64,7 +64,7 @@ class DefaultColorsService {
 			wp_die( esc_html__( 'You must specify Color Slug', 'block-editor-colors' ) );
 		}
 
-		$slug = sanitize_title( $_POST['slug'] );
+		$slug = sanitize_title( wp_unslash( $_POST['slug'] ) );
 
 		if ( isset( $_POST['clear'] ) ) {
 			$this->reset_color( $slug );
@@ -76,7 +76,7 @@ class DefaultColorsService {
 			wp_die( esc_html__( 'Empty fields', 'block-editor-colors' ) );
 		}
 
-		$color = sanitize_hex_color( $_POST['color'] );
+		$color = sanitize_hex_color( wp_unslash( $_POST['color'] ) );
 
 		$this->update_color( $slug, $color );
 

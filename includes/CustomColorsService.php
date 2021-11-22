@@ -99,7 +99,7 @@ class CustomColorsService {
 
 	public function add_color() {
 
-		if ( empty( $_POST ) || ! wp_verify_nonce( $_POST['create_custom_color_nonce'], 'create_custom_color' ) ) {
+		if ( ! isset( $_POST['create_custom_color_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['create_custom_color_nonce'] ) ), 'create_custom_color' ) ) {
 			wp_die( esc_html__( 'Denied', 'block-editor-colors' ) );
 		}
 
@@ -107,9 +107,9 @@ class CustomColorsService {
 			wp_die( esc_html__( 'Empty fields', 'block-editor-colors' ) );
 		}
 
-		$name  = sanitize_text_field( $_POST['new_name'] );
-		$slug  = sanitize_title( $_POST['new_slug'] );
-		$color = sanitize_hex_color( $_POST['new_color'] );
+		$name  = sanitize_text_field( wp_unslash( $_POST['new_name'] ) );
+		$slug  = sanitize_title( wp_unslash( $_POST['new_slug'] ) );
+		$color = sanitize_hex_color( wp_unslash( $_POST['new_color'] ) );
 
 		$this->update_color( $name, $color, $slug );
 
@@ -119,7 +119,7 @@ class CustomColorsService {
 
 	public function edit_color() {
 
-		if ( empty( $_POST ) || ! wp_verify_nonce( $_POST['update_custom_color_nonce'], 'update_custom_color' ) ) {
+		if ( ! isset( $_POST['update_custom_color_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['update_custom_color_nonce'] ) ), 'update_custom_color' ) ) {
 			wp_die( esc_html__( 'Denied', 'block-editor-colors' ) );
 		}
 
@@ -139,8 +139,8 @@ class CustomColorsService {
 			wp_die( esc_html__( 'Empty fields', 'block-editor-colors' ) );
 		}
 
-		$name  = sanitize_text_field( $_POST['name'] );
-		$color = sanitize_hex_color( $_POST['color'] );
+		$name  = sanitize_text_field( wp_unslash( $_POST['name'] ) );
+		$color = sanitize_hex_color( wp_unslash( $_POST['color'] ) );
 
 		$this->update_color( $name, $color, false, $id );
 
@@ -192,7 +192,7 @@ class CustomColorsService {
 	}
 
 	public function edit_inactive_color() {
-		if ( empty( $_POST ) || ! wp_verify_nonce( $_POST['update_inactive_color_nonce'], 'update_inactive_color' ) ) {
+		if ( ! isset( $_POST['update_inactive_color_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['update_inactive_color_nonce'] ) ), 'update_inactive_color' ) ) {
 			wp_die( esc_html__( 'Denied', 'block-editor-colors' ) );
 		}
 
@@ -217,7 +217,7 @@ class CustomColorsService {
 	public function update_color_order() {
 		check_ajax_referer( 'block_editor_colors_nonce', 'nonce' );
 
-		$colors = $_POST['colors'];
+		$colors = $this->recursive_sanitize_array( wp_unslash( $_POST['colors'] ) ); // phpcs:ignore
 
 		foreach ( $colors as $order => $color_id ) {
 			$updated = wp_update_post( [
@@ -233,6 +233,30 @@ class CustomColorsService {
 		wp_send_json_success();
 		wp_die();
 	}
+
+	/**
+	 * Recursive sanitation for an array
+	 *
+	 * @since 1.2.1
+	 *
+	 * @param $array
+	 *
+	 * @return mixed
+	 */
+	function recursive_sanitize_array( $array ) {
+
+		foreach ( $array as $key => &$value ) {
+			if ( is_array( $value ) ) {
+				$value = $this->recursive_sanitize_array( $value );
+			}
+			else {
+				$value = sanitize_text_field( $value );
+			}
+		}
+
+		return $array;
+	}
+
 
 }
 

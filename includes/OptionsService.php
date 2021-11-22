@@ -38,13 +38,13 @@ class OptionsService {
 
 	public function update_general_options() {
 
-		if ( empty( $_POST ) || ! wp_verify_nonce( $_POST['update_general_options_nonce'], 'update_general_options' ) ) {
+		if ( ! isset( $_POST['update_general_options_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['update_general_options_nonce'] ) ), 'update_general_options' ) ) {
 			wp_die( esc_html__( 'Denied', 'block-editor-colors' ) );
 		}
 
 		$prefix_option_name = $this->get_class_prefix_option_name();
 		if ( isset( $_POST[ $prefix_option_name ] ) ) {
-			$option_value = sanitize_text_field( $_POST[ $prefix_option_name ] );
+			$option_value = sanitize_text_field( wp_unslash( $_POST[ $prefix_option_name ] ) );
 			update_option( $prefix_option_name, $option_value );
 		}
 
