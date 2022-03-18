@@ -83,7 +83,9 @@ CSS;
 		$settings['colors'] = array_merge( $initial_colors, $new_colors );
 
 		if ( function_exists( 'get_block_editor_settings' ) ) {
-			$settings['__experimentalFeatures']['color']['palette']['user'] = array_merge($initial_colors, $new_colors);
+			$settings['__experimentalFeatures']['color']['palette']['user']
+				= $settings['__experimentalFeatures']['color']['palette']['theme']
+				= array_merge($initial_colors, $new_colors);
 		}
 
 		return $settings;
