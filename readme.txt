@@ -46,9 +46,9 @@ Block Editor Colors plugin is distributed under the terms of the GNU GPL.
 
 == Changelog ==
 
-= 1.2.3, Mar 21 2022 =
-* Added CSS variables for colors added or edited via plugin.
-* Fixed an issue when custom colors may not be applied in block editor.
+= 1.2.3, Mar 23 2022 =
+* Added CSS variables for colors set or edited via the plugin.
+* Fixed an issue when custom colors may not have been applied in the block editor.
 
 = 1.2.2, Mar 18 2022 =
 * Improved compatibility with WordPress 5.9.
