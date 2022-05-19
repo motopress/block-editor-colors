@@ -27,9 +27,15 @@ class ColorsService {
 		add_action( 'wp_head', array( $this, 'print_head_styles' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'add_editor_styles' ) );
 
+		// add Gutenberg plugin filter with less priority
+		if ( has_filter( 'block_editor_settings_all', 'gutenberg_get_block_editor_settings' ) ) {
+			remove_filter( 'block_editor_settings_all', 'gutenberg_get_block_editor_settings', PHP_INT_MAX - 1 );
+			add_filter( 'block_editor_settings_all', 'gutenberg_get_block_editor_settings', PHP_INT_MAX - 1 );
+		}
+
 		// since WP 5.8.0 'block_editor_settings' filter is deprecated
 		if ( function_exists( 'get_block_editor_settings' ) ) {
-			add_filter( 'block_editor_settings_all', array( $this, 'filter_block_editor_settings' ) );
+			add_filter( 'block_editor_settings_all', array( $this, 'filter_block_editor_settings' ), PHP_INT_MAX );
 		} else {
 			add_filter( 'block_editor_settings', array( $this, 'filter_block_editor_settings' ) );
 		}
