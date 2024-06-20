@@ -58,32 +58,25 @@ class CustomColorsService {
 			'nopaging'  => true
 		);
 
-		$query           = new \WP_Query( $args );
+		$posts           = get_posts( $args );
 		$colors          = [];
 		$disabled_colors = [];
 
-		if ( $query->have_posts() ) {
-			while ( $query->have_posts() ) {
-				$query->the_post();
-
-				if ( get_post_status() === 'publish' ) {
-					$colors[ get_the_ID() ] = [
-						'name'  => get_the_title(),
-						'slug'  => get_post_meta( get_the_ID(), 'slug', true ),
-						'color' => get_post_meta( get_the_ID(), 'color', true ),
-					];
-				} else {
-					$disabled_colors[ get_the_ID() ] = [
-						'name'  => get_the_title(),
-						'slug'  => get_post_meta( get_the_ID(), 'slug', true ),
-						'color' => get_post_meta( get_the_ID(), 'color', true ),
-					];
-				}
-
+		foreach ( $posts as $post ) {
+			if ( $post->post_status === 'publish' ) {
+				$colors[ $post->ID ] = [
+					'name'  => $post->post_title,
+					'slug'  => get_post_meta( $post->ID, 'slug', true ),
+					'color' => get_post_meta( $post->ID, 'color', true ),
+				];
+			} else {
+				$disabled_colors[ $post->ID ] = [
+					'name'  => $post->post_title,
+					'slug'  => get_post_meta( $post->ID, 'slug', true ),
+					'color' => get_post_meta( $post->ID, 'color', true ),
+				];
 			}
 		}
-
-		wp_reset_postdata();
 
 		$this->custom_colors          = $colors;
 		$this->disabled_custom_colors = $disabled_colors;
