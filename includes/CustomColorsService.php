@@ -52,10 +52,11 @@ class CustomColorsService {
 	private function set_colors() {
 
 		$args = array(
-			'post_type' => $this->color_cpt_slug,
-			'orderby'   => 'menu_order',
-			'order'     => 'ASC',
-			'nopaging'  => true
+			'post_type'   => $this->color_cpt_slug,
+			'orderby'     => 'menu_order',
+			'order'       => 'ASC',
+			'post_status' => 'any',
+			'numberposts' => -1
 		);
 
 		$posts           = get_posts( $args );
