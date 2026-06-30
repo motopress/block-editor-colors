@@ -26,6 +26,7 @@ class ColorsService {
 
 		add_action( 'wp_head', array( $this, 'print_head_styles' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'add_editor_styles' ) );
+		add_action( 'enqueue_block_assets', array( $this, 'add_editor_styles' ) );
 
 		// add Gutenberg plugin filter with less priority
 		if ( has_filter( 'block_editor_settings_all', 'gutenberg_get_block_editor_settings' ) ) {
@@ -47,7 +48,7 @@ class ColorsService {
 		$edited_initial_colors = $this->default_colors_service->get_edited_colors();
 
 		$colors = array_merge( $edited_initial_colors, $custom_colors );
-		$prefix = $is_editor ? 'body .editor-styles-wrapper' : $this->options_service->get_style_classes_prefix();
+		$prefix = $is_editor ? '.editor-styles-wrapper' : $this->options_service->get_style_classes_prefix();
 
 		$variables = '';
 		$css = '';
@@ -88,6 +89,10 @@ CSS;
 	}
 
 	public function add_editor_styles() {
+		if ( !is_admin() ) {
+			return;
+		}
+
 		$style = $this->generate_colors_css( true );
 		if ( $style == '' ) {
 			return;
