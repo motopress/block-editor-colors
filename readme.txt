@@ -46,7 +46,7 @@ Block Editor Colors plugin is distributed under the terms of the GNU GPL.
 
 == Changelog ==
 
-= 1.2.7, Jun 20 2024 =
+= 1.2.7, Jun 30 2026 =
 * Improved compatibility with WordPress 7.0.
 
 = 1.2.6, Jun 20 2024 =
